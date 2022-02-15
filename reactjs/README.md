@@ -154,7 +154,21 @@ Những phương thức bên dưới được gọi theo thứ tự khi một in
 - Các key giúp React xác định những phần tử nào đã thay đổi, được thêm, hay bị xóa. Các key nên được truyền vào các element bên trong một mảng để cho các element này có một định danh cố định (stable identity):
 - Các tốt nhất để chọn một key là sử dụng một chuỗi mà được xác định là duy nhất trong các nút anh em (siblings). Cách thông thường nhất mà bạn sẽ sử dụng là dùng các ID từ dữ liệu của bạn làm key:
 - Các Key được sử dụng bên trong các mảng nên là duy nhất giữa các nút anh em của chúng. Tuy nhiên chúng không cần là duy nhất đối với toàn bộ component. Chúng ta có thể sử dụng các key giống nhau khi chúng ta tạo hai mảng khác nhau:
-## Composion & Inheritance
+## Code-Splitting
+### Đóng Gói (Bundling)
+Hầu hết files trong các ứng dụng React sẽ được “đóng gói” bằng cách sử dụng những công cụ như Webpack, Rollup hay Browserify. Đóng gói là quá trình xử lý những files đã được import và kết hợp chúng thành một file duy nhất: một “bundle”.File đóng gói này sau đó có thể được trang web tải lên chỉ một lần.
+### Phân chia Code
+Code-Splitting là một feature hỗ trợ bởi bundler như Webpack, Rollup và Browserify (via factor-bundle) nó có thể tạo ra nhiều bundle nhỏ có thể được load một cách tự động tại thời điểm runtime.
+### import()
+Phương pháp tốt nhất để sử dụng code-splitting trong ứng dụng là thông qua cú pháp import() động.
+>Khi sử dụng Babel, bạn sẽ cần phải chắc chắn rằng Babel có thể phân giải cú pháp import động nhưng không làm nó bị biến đổi. Bạn sẽ cần `@babel/plugin-syntax-dynamic-import`.
+### React.lazy
+> Chú ý: React.lazy và Suspense chưa có sẵn cho server-side rendering. Nếu bạn muốn phân chia code ở những ứng dụng render tại server, chúng tôi xin giới thiệu Loadable Components. Nó có hướng dẫn phân chia code với server-side rendering.
+
+Chức năng React.lazy cho phép bạn render một import động như một component bình thường.
+## Context
+Context cung cấp phương pháp truyền data xuyên suốt component tree mà không cần phải truyền props một cách thủ công qua từng level.
+
 
 ## Base hook
 
